@@ -1,4 +1,4 @@
-package com.example.tickeep
+package com.sugi.tickeep
 
 import io.flutter.embedding.android.FlutterActivity
 

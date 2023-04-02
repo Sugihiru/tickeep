@@ -19,3 +19,12 @@ doc/api/
 *.js_
 *.js.deps
 *.js.map
+
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Firebase files
+lib/firebase_options.dart
+ios/firebase_app_id_file.json
+android/app/google-services.json
+GoogleService-Info.plist
