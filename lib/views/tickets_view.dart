@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:tickeep/generated/l10n.dart';
 import 'package:tickeep/providers/tickets_provider.dart';
 
 class TicketsView extends StatelessWidget {
@@ -13,7 +14,7 @@ class TicketsView extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text("Tickeep"),
+            title: Text(S.of(context).appName),
             bottom: const TabBar(
               tabs: [
                 Tab(text: "Current"),
