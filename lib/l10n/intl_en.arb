@@ -1,3 +1,5 @@
 {
-    "appName": "Tickeep"
+    "appName": "Tickeep",
+    "add": "Add",
+    "edit": "Edit"
 }
