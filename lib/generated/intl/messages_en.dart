@@ -24,6 +24,12 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add": MessageLookupByLibrary.simpleMessage("Add"),
         "appName": MessageLookupByLibrary.simpleMessage("Tickeep"),
-        "edit": MessageLookupByLibrary.simpleMessage("Edit")
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "errorValueRequired":
+            MessageLookupByLibrary.simpleMessage("Value required"),
+        "expirationDate":
+            MessageLookupByLibrary.simpleMessage("Expiration date"),
+        "optional": MessageLookupByLibrary.simpleMessage("optional"),
+        "title": MessageLookupByLibrary.simpleMessage("Title")
       };
 }

@@ -79,6 +79,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Title`
+  String get title {
+    return Intl.message(
+      'Title',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Value required`
+  String get errorValueRequired {
+    return Intl.message(
+      'Value required',
+      name: 'errorValueRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expiration date`
+  String get expirationDate {
+    return Intl.message(
+      'Expiration date',
+      name: 'expirationDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `optional`
+  String get optional {
+    return Intl.message(
+      'optional',
+      name: 'optional',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

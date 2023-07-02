@@ -7,14 +7,14 @@ part of 'ticket_model.dart';
 // **************************************************************************
 
 TicketModel _$TicketModelFromJson(Map<String, dynamic> json) => TicketModel(
-      json['ticketId'] as String,
-      DateTime.parse(json['eventDate'] as String),
+      json['ticketTitle'] as String,
+      json['ticketData'] as String,
       DateTime.parse(json['expirationDate'] as String),
     );
 
 Map<String, dynamic> _$TicketModelToJson(TicketModel instance) =>
     <String, dynamic>{
-      'ticketId': instance.ticketId,
-      'eventDate': instance.eventDate.toIso8601String(),
+      'ticketTitle': instance.ticketTitle,
+      'ticketData': instance.ticketData,
       'expirationDate': instance.expirationDate.toIso8601String(),
     };

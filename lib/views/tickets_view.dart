@@ -43,7 +43,8 @@ class TicketsListView extends ConsumerWidget {
         error: (error, stack) => Text(error.toString()),
         data: (tickets) {
           return Column(children: [
-            for (var ticket in tickets) TicketsListElement(ticket: ticket)
+            for (var ticket in tickets.values)
+              TicketsListElement(ticket: ticket)
           ]);
         });
   }
@@ -58,8 +59,9 @@ class TicketsListElement extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(ticket.ticketId),
-        Text(ticket.eventDate.toIso8601String())
+        Text(ticket.ticketTitle),
+        Text(ticket.expirationDate.toIso8601String()),
+        const Divider(),
       ],
     );
   }

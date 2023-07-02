@@ -1,5 +1,9 @@
 {
     "appName": "Tickeep",
     "add": "Add",
-    "edit": "Edit"
+    "edit": "Edit",
+    "title": "Title",
+    "errorValueRequired": "Value required",
+    "expirationDate": "Expiration date",
+    "optional": "optional"
 }
