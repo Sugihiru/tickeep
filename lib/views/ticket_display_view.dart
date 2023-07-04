@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'package:tickeep/generated/l10n.dart';
 import 'package:tickeep/models/ticket_model.dart';
+import 'package:tickeep/providers/tickets_provider.dart';
+import 'package:tickeep/services/local_storage.dart';
 
-class TicketDisplayView extends StatelessWidget {
+class TicketDisplayView extends ConsumerWidget {
   const TicketDisplayView({super.key, required this.ticket});
 
   final TicketModel ticket;
 
-  Future<void> showDeleteTicketDialog(BuildContext context) {
+  Future<void> showDeleteTicketDialog(BuildContext context, WidgetRef ref) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -30,7 +33,10 @@ class TicketDisplayView extends StatelessWidget {
                   style: const TextStyle(color: Colors.red),
                 ),
                 onPressed: () {
-                  // Delete
+                  deleteTicketFromLocalStorage(ticket);
+                  ref.invalidate(getUserTicketsProvider);
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
                 },
               ),
             ],
@@ -39,7 +45,7 @@ class TicketDisplayView extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(title: Text(ticket.ticketTitle), actions: [
         IconButton(
@@ -55,7 +61,7 @@ class TicketDisplayView extends StatelessWidget {
             color: Colors.red,
           ),
           tooltip: S.of(context).deleteTicket,
-          onPressed: () => showDeleteTicketDialog(context),
+          onPressed: () => showDeleteTicketDialog(context, ref),
         ),
       ]),
       body: Center(

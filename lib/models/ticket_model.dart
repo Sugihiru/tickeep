@@ -4,11 +4,17 @@ part 'ticket_model.g.dart';
 
 @JsonSerializable()
 class TicketModel {
+  final String ticketId;
   final String ticketTitle;
   final String ticketData;
   final DateTime? expirationDate;
 
-  TicketModel(this.ticketTitle, this.ticketData, this.expirationDate);
+  TicketModel(
+    this.ticketId,
+    this.ticketTitle,
+    this.ticketData,
+    this.expirationDate,
+  );
 
   factory TicketModel.fromJson(Map<String, dynamic> json) =>
       _$TicketModelFromJson(json);

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:uuid/uuid.dart';
 
 import 'package:tickeep/models/ticket_model.dart';
 
@@ -10,9 +9,15 @@ AndroidOptions _getAndroidOptions() => const AndroidOptions(
     );
 final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
 
-Future<void> writeTicketToLocalStorage(final TicketModel value) {
+Future<void> writeTicketToLocalStorage(final TicketModel ticket) {
   return storage.write(
-      key: const Uuid().v4(), value: jsonEncode(value.toJson()));
+    key: ticket.ticketId,
+    value: jsonEncode(ticket.toJson()),
+  );
+}
+
+Future<void> deleteTicketFromLocalStorage(final TicketModel ticket) {
+  return storage.delete(key: ticket.ticketId);
 }
 
 Future<Map<String, TicketModel>> getAllItemsInStorage() async {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:uuid/uuid.dart';
 
 import 'package:tickeep/generated/l10n.dart';
 import 'package:tickeep/models/ticket_model.dart';
@@ -87,6 +88,7 @@ class TicketConfigureState extends ConsumerState<TicketConfigure> {
           onPressed: () {
             if (_formKey.currentState!.validate()) {
               final TicketModel ticket = TicketModel(
+                const Uuid().v4(),
                 _ticketNameTextController.text,
                 widget.ticketData.rawValue!,
                 expirationDate,
