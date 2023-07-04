@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import 'package:tickeep/generated/l10n.dart';
 import 'package:tickeep/models/ticket_model.dart';
+import 'package:tickeep/providers/tickets_provider.dart';
 import 'package:tickeep/services/local_storage.dart';
 
-class TicketConfigure extends StatefulWidget {
+class TicketConfigure extends ConsumerStatefulWidget {
   const TicketConfigure(
       {super.key,
       required this.ticketData,
@@ -17,10 +19,10 @@ class TicketConfigure extends StatefulWidget {
   final String confirmationButtonText;
 
   @override
-  State<TicketConfigure> createState() => _TicketConfigureState();
+  TicketConfigureState createState() => TicketConfigureState();
 }
 
-class _TicketConfigureState extends State<TicketConfigure> {
+class TicketConfigureState extends ConsumerState<TicketConfigure> {
   final TextEditingController _ticketNameTextController =
       TextEditingController();
   final TextEditingController _expirationDateTextController =
@@ -89,8 +91,10 @@ class _TicketConfigureState extends State<TicketConfigure> {
                 widget.ticketData.rawValue!,
                 expirationDate,
               );
-              writeTicketToLocalStorage(ticket)
-                  .then((value) => Navigator.of(context).pop());
+              writeTicketToLocalStorage(ticket).then((value) {
+                ref.invalidate(getUserTicketsProvider);
+                Navigator.of(context).pop();
+              });
             }
           },
           label: Text(widget.confirmationButtonText)),
