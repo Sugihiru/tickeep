@@ -39,15 +39,18 @@ class TicketsListView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final userTicketsWatch = ref.watch(getUserTicketsProvider);
 
-    return userTicketsWatch.when(
-        loading: () => const CircularProgressIndicator(),
-        error: (error, stack) => Text(error.toString()),
-        data: (tickets) {
-          return GridView.count(crossAxisCount: 2, children: [
-            for (var ticket in tickets.values)
-              TicketsListElement(ticket: ticket)
-          ]);
-        });
+    return Padding(
+      padding: const EdgeInsets.all(30),
+      child: userTicketsWatch.when(
+          loading: () => const CircularProgressIndicator(),
+          error: (error, stack) => Text(error.toString()),
+          data: (tickets) {
+            return GridView.count(crossAxisCount: 2, children: [
+              for (var ticket in tickets.values)
+                TicketsListElement(ticket: ticket)
+            ]);
+          }),
+    );
   }
 }
 
