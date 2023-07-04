@@ -7,8 +7,8 @@ import 'package:tickeep/generated/l10n.dart';
 import 'package:tickeep/models/ticket_model.dart';
 import 'package:tickeep/services/local_storage.dart';
 
-class TicketsConfigure extends StatefulWidget {
-  const TicketsConfigure(
+class TicketConfigure extends StatefulWidget {
+  const TicketConfigure(
       {super.key,
       required this.ticketData,
       required this.confirmationButtonText});
@@ -17,10 +17,10 @@ class TicketsConfigure extends StatefulWidget {
   final String confirmationButtonText;
 
   @override
-  State<TicketsConfigure> createState() => _TicketsConfigureState();
+  State<TicketConfigure> createState() => _TicketConfigureState();
 }
 
-class _TicketsConfigureState extends State<TicketsConfigure> {
+class _TicketConfigureState extends State<TicketConfigure> {
   final TextEditingController _ticketNameTextController =
       TextEditingController();
   final TextEditingController _expirationDateTextController =
@@ -87,7 +87,7 @@ class _TicketsConfigureState extends State<TicketsConfigure> {
               final TicketModel ticket = TicketModel(
                 _ticketNameTextController.text,
                 widget.ticketData.rawValue!,
-                expirationDate!,
+                expirationDate,
               );
               writeTicketToLocalStorage(ticket)
                   .then((value) => Navigator.of(context).pop());

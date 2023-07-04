@@ -24,7 +24,13 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add": MessageLookupByLibrary.simpleMessage("Add"),
         "appName": MessageLookupByLibrary.simpleMessage("Tickeep"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "deleteTicket": MessageLookupByLibrary.simpleMessage("Delete ticket"),
+        "deleteTicketConfirm": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this ticket ?"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "editTicket": MessageLookupByLibrary.simpleMessage("Edit ticket"),
         "errorValueRequired":
             MessageLookupByLibrary.simpleMessage("Value required"),
         "expirationDate":

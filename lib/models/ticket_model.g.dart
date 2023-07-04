@@ -9,12 +9,14 @@ part of 'ticket_model.dart';
 TicketModel _$TicketModelFromJson(Map<String, dynamic> json) => TicketModel(
       json['ticketTitle'] as String,
       json['ticketData'] as String,
-      DateTime.parse(json['expirationDate'] as String),
+      json['expirationDate'] == null
+          ? null
+          : DateTime.parse(json['expirationDate'] as String),
     );
 
 Map<String, dynamic> _$TicketModelToJson(TicketModel instance) =>
     <String, dynamic>{
       'ticketTitle': instance.ticketTitle,
       'ticketData': instance.ticketData,
-      'expirationDate': instance.expirationDate.toIso8601String(),
+      'expirationDate': instance.expirationDate?.toIso8601String(),
     };

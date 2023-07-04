@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tickeep/generated/l10n.dart';
 import 'package:tickeep/models/ticket_model.dart';
 import 'package:tickeep/providers/tickets_provider.dart';
+import 'package:tickeep/views/ticket_display_view.dart';
 import 'package:tickeep/views/tickets_add_from_camera_view.dart';
 
 class TicketsView extends StatelessWidget {
@@ -42,7 +43,7 @@ class TicketsListView extends ConsumerWidget {
         loading: () => const CircularProgressIndicator(),
         error: (error, stack) => Text(error.toString()),
         data: (tickets) {
-          return Column(children: [
+          return GridView.count(crossAxisCount: 2, children: [
             for (var ticket in tickets.values)
               TicketsListElement(ticket: ticket)
           ]);
@@ -57,12 +58,23 @@ class TicketsListElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(ticket.ticketTitle),
-        Text(ticket.expirationDate.toIso8601String()),
-        const Divider(),
-      ],
+    return InkWell(
+      child: Card(
+        child: Center(
+          child: Text(
+            ticket.ticketTitle,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+        ),
+      ),
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute<void>(
+            builder: (BuildContext context) => TicketDisplayView(
+                  ticket: ticket,
+                )));
+      },
+      onLongPress: () {},
     );
   }
 }

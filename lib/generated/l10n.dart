@@ -119,6 +119,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit ticket`
+  String get editTicket {
+    return Intl.message(
+      'Edit ticket',
+      name: 'editTicket',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete ticket`
+  String get deleteTicket {
+    return Intl.message(
+      'Delete ticket',
+      name: 'deleteTicket',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this ticket ?`
+  String get deleteTicketConfirm {
+    return Intl.message(
+      'Are you sure you want to delete this ticket ?',
+      name: 'deleteTicketConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

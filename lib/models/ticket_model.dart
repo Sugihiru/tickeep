@@ -6,7 +6,7 @@ part 'ticket_model.g.dart';
 class TicketModel {
   final String ticketTitle;
   final String ticketData;
-  final DateTime expirationDate;
+  final DateTime? expirationDate;
 
   TicketModel(this.ticketTitle, this.ticketData, this.expirationDate);
 
