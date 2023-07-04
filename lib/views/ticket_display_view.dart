@@ -10,6 +10,34 @@ class TicketDisplayView extends StatelessWidget {
 
   final TicketModel ticket;
 
+  Future<void> showDeleteTicketDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(S.of(context).delete),
+            content: Text(S.of(context).deleteTicketConfirm),
+            actions: <Widget>[
+              TextButton(
+                child: Text(S.of(context).cancel),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                child: Text(
+                  S.of(context).delete,
+                  style: const TextStyle(color: Colors.red),
+                ),
+                onPressed: () {
+                  // Delete
+                },
+              ),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +55,7 @@ class TicketDisplayView extends StatelessWidget {
             color: Colors.red,
           ),
           tooltip: S.of(context).deleteTicket,
-          onPressed: () {
-            // delete
-          },
+          onPressed: () => showDeleteTicketDialog(context),
         ),
       ]),
       body: Center(
